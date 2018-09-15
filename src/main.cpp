@@ -173,7 +173,7 @@ vector<double> getXY(double s, double d, const vector<double> &maps_s, const vec
 
 }
 
-int assignLane(double d) {
+int calculateLane(double d) {
 	// Check which lane the d-value comes from
 	// Left lane = 0, middle lane = 1, right lane = 2	
 	int lane;
@@ -305,7 +305,7 @@ int main() {
 						double vehicle_s = sensor_fusion[i][5];
 						double vehicle_d = sensor_fusion[i][6];
 						double vehicle_v = sqrt((sensor_fusion[i][3], 2)*(sensor_fusion[i][3], 2) + (sensor_fusion[i][4], 2) * (sensor_fusion[i][4], 2));
-						int vehicle_lane = assignLane(vehicle_d);
+						int vehicle_lane = calculateLane(vehicle_d);
 
 						//if using previous points can project s value out
 						vehicle_s += ((double)prev_size*.02*vehicle_v);
