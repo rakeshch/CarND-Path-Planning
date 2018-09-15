@@ -324,7 +324,7 @@ int main() {
 						}
 					}
 
-					// Behavior : Let's see what to do.
+					// Behavior Planning - Plan a lane change or keep lane based on the checks done above
 					double speed_diff = 0;
 					const double MAX_SPEED = 49.5;
 					const double MAX_ACC = .224;
