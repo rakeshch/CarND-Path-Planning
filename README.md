@@ -17,9 +17,11 @@ Screenshots below shows the car was able to drive for 15 and 20 miles without an
 
 The implementation is divided into three parts:
 
-#1. Prediction
-#2. Behavior Planning
-#3. Trajectory Calculation
+1. Prediction
+
+2. Behavior Planning
+
+3. Trajectory Calculation
 
 After reading the simulator data in main.cpp until line 380, my first check is to see if there is any remaining path left (line 383). If it is the first time around, this means I have to initiate my points to later be used in a spline function to be equal to where the car is right now (lines 266-278). If there is a remaining path, this will get pushed back into the x and y coordinates to be fed the simulator again. Additionally, I calculate the x, y, yaw and velocity based off the end values of the remaining path, in order to have the behavior planner begin from the end of the old path (lines 279-295).
 
