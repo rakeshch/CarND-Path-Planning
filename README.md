@@ -5,7 +5,9 @@ Self-Driving Car Engineer Nanodegree Program
 
 The goal of this project is to safely navigate the car around a virtual highway with other traffic that is driving +-10 MPH of the 50 MPH speed limit, given car's localization, sensor fusion data and a sparse map list of waypoints around the highway. The car should try to go as close as possible to the 50 MPH speed limit, which means passing slower traffic when possible, while other cars will try to change lanes too. The car should avoid hitting other cars at all cost as well as driving inside of the marked road lanes at all times, unless going from one lane to another. The car is required to be able to drive at least 4.32 miles while maintaing the speed limit and not exceeding a total acceleration of 10 m/s^2 and a jerk of 10 m/s^3.
 
-A video of my vehicle making it further than the required distance can be seen [here](https://youtu.be/WZ13upZii7w) with a screenshot below shows the car was able to drive for 15 and 20 miles without any incident.
+A video of my vehicle making it further than the required distance can be seen [here](https://youtu.be/PwepF6I_oCo).
+
+Screenshots below shows the car was able to drive for 15 and 20 miles without any incident.
 
 ![Screenshot](./Images/Path_plan_001.png)
 
@@ -13,7 +15,11 @@ A video of my vehicle making it further than the required distance can be seen [
 
 ### Implementation
 
-![Screenshot](./Images/Path_plan_001.png)
+The implementation is divided into three parts:
+
+#1. Prediction
+#2. Behavior Planning
+#3. Trajectory Calculation
 
 After reading the simulator data in main.cpp until line 380, my first check is to see if there is any remaining path left (line 383). If it is the first time around, this means I have to initiate my points to later be used in a spline function to be equal to where the car is right now (lines 266-278). If there is a remaining path, this will get pushed back into the x and y coordinates to be fed the simulator again. Additionally, I calculate the x, y, yaw and velocity based off the end values of the remaining path, in order to have the behavior planner begin from the end of the old path (lines 279-295).
 
