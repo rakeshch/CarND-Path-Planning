@@ -462,7 +462,6 @@ int main() {
 							next_y_vals.push_back(y_point);
 						}
 					}
-					//target_vehicle_speed = ref_vel;  // Save the end speed to be used for the next path
 
 					json msgJson;
 					msgJson["next_x"] = next_x_vals;
