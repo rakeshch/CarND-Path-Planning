@@ -25,9 +25,9 @@ The implementation is divided into three parts:
 
 ## Prediction
 
-The lines 296-348 in main.cpp deals with telemetry and sensor fusion data to understand the cars environment. Three aspects of the data we are interested are if there is a car in front of our car, if there is a car in the left while planning a lane change and if there is a car in right lane to plan a lane change. 
+The lines 296-348 in main.cpp deals with telemetry and sensor fusion data to understand the cars environment. Three aspects of the data we are interested are if there is a car in front of our car, if there is a car in the left lane and if there is a car in the right lane.
 
-This part of code checks to see if the distance between our car and a car infront and behind us are greater than 30 meters. If the distance is less than 30 meters, a lane change will be planned.
+This part of code is responsible to check if the distance between our car and a car infront and behind us is greater than 30 meters. If the distance is less than 30 meters, a lane change will be planned in the behavior.
 
 ## Behavior 
 
