@@ -23,6 +23,26 @@ The implementation is divided into three parts:
 
 3. Trajectory Calculation
 
+## Prediction
+
+The lines 296-348 in main.cpp deals with telemetry and sensor fusion data to understand the cars environment. Three aspects of the data we are interested are if there is a car in front of our car, if there is a car in the left while planning a lane change and if there is a car in right lane to plan a lane change. 
+
+This part of code checks to see if the distance between our car and a car infront and behind us are greater than 30 meters. If the distance is less than 30 meters, a lane change will be planned.
+
+## Behavior 
+
+The lines 327-348 in main.cpp is responsible for planning the behavior of our car, whether to keep lane by increasing or decreasing the speed, change lane (left or right lane based on the predictions made) if there is a car infront of our car and is less than 30 meters distance.
+
+Instead of increasing the speed here, a parameter speed_diff is created to be used for speed changes when generating the trajectory in the final part of the code. This makes the car more responsive acting faster to changing situations like a car in front of it trying to apply breaks to cause a collision.
+
+## Trajectory
+
+Finally, it's time to make waypoints for the spline function. The lines 350-464 calculates the trajectory based on the speed and lane output from the behavior, car coordinates and previous path points.
+
+First, the last two points of the previous trajectory (or the car position if there are no previous trajectory) are used in conjunction with three waypoints spaced 30 meters (lines 394-397 in main.cpp), too much shorter sometimes caused it to exceed maximum acceleration and maximum jerk. All these points are then shifted and rotated (lines 408-416 in main.cpp) so that they are local to my car. This helps to ensure the spline can work correctly, as the x-values need to be in order, and we want to them be correctly spaced out going forward.
+
+After setting the spline, I used the spline to come up with new points along that spline. In order to ensure more continuity on the trajectory (in addition to adding the last two point of the pass trajectory to the spline adjustment), the pass trajectory points are copied to the new trajectory (lines 277 to 294). The rest of the points are calculated by evaluating the spline and transforming the output coordinates to non local coordinates (lines 434 to 463). The change in the velocity of the car is handled in the lines 436-442. The speed change is decided in the behavior part of the code (lines 328-348), but it is used in that part to increase/ or decrease speed on every trajectory points instead of doing it for the complete trajectory.
+
 #### The map of the highway is in data/highway_map.txt
 Each waypoint in the list contains  [x,y,s,dx,dy] values. x and y are the waypoint's map coordinate position, the s value is the distance along the road to get to that waypoint in meters, the dx and dy values define the unit normal vector pointing outward of the highway loop.
 
