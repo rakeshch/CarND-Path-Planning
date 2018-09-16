@@ -13,7 +13,7 @@ A video of my vehicle making it further than the required distance can be seen [
 
 ![Screenshot](./Images/screen_003.png)
 
-### Implementation
+## Implementation
 
 The implementation is divided into three parts:
 
@@ -23,19 +23,19 @@ The implementation is divided into three parts:
 
 3. Trajectory Calculation
 
-## Prediction
+### Prediction
 
 The lines 296-348 in main.cpp deals with telemetry and sensor fusion data to understand the cars environment. Three aspects of the data we are interested are if there is a car in front of our car, if there is a car in the left lane and if there is a car in the right lane.
 
 This part of code is responsible to check if the distance between our car and a car infront and behind us is greater than 30 meters. If the distance is less than 30 meters, a lane change will be planned in the behavior.
 
-## Behavior 
+### Behavior 
 
 The lines 327-348 in main.cpp is responsible for planning the behavior of our car, whether to keep lane by increasing or decreasing the speed, change lane (left or right lane based on the predictions made) if there is a car infront of our car and is less than 30 meters distance.
 
 Instead of increasing the speed here, a parameter speed_diff is created to be used for speed changes when generating the trajectory in the final part of the code. This makes the car more responsive acting faster to changing situations like a car in front of it trying to apply breaks to cause a collision.
 
-## Trajectory
+### Trajectory
 
 Finally, it's time to make waypoints for the spline function. The lines 350-464 calculates the trajectory based on the speed and lane output from the behavior, car coordinates and previous path points.
 
