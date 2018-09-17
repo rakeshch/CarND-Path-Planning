@@ -37,7 +37,7 @@ Instead of increasing the speed here, a parameter speed_diff is created to be us
 
 ### Trajectory
 
-Finally, it's time to make waypoints for the spline function. The lines 350-464 calculates the trajectory based on the speed and lane output from the behavior, car coordinates and previous path points.
+The final part is to make waypoints for the spline function. The lines 350-464 calculates the trajectory based on the speed and lane output from the behavior, car coordinates and previous path points.
 
 First, the last two points of the previous trajectory (or the car position if there are no previous trajectory) are used in conjunction with three waypoints spaced 30 meters (lines 394-397 in main.cpp), too much shorter sometimes caused it to exceed maximum acceleration and maximum jerk. All these points are then shifted and rotated (lines 408-416 in main.cpp) so that they are local to my car. This helps to ensure the spline can work correctly, as the x-values need to be in order, and we want to them be correctly spaced out going forward.
 
